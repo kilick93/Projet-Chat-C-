@@ -7,3 +7,12 @@ C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\obj\Debug\Cli
 C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\obj\Debug\Client.csproj.GenerateResource.Cache
 C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\obj\Debug\Client.exe
 C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\obj\Debug\Client.pdb
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\bin\Debug\Client.exe.config
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\bin\Debug\Client.exe
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\bin\Debug\Client.pdb
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\obj\Debug\Client.Form1.resources
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\obj\Debug\Client.csproj.GenerateResource.Cache
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\obj\Debug\Client.exe
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\obj\Debug\Client.pdb
