@@ -4,9 +4,21 @@ C:\Users\Robin\documents\visual studio 2013\Projects\Server\Server\bin\Debug\Ser
 C:\Users\Robin\documents\visual studio 2013\Projects\Server\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
 C:\Users\Robin\documents\visual studio 2013\Projects\Server\Server\obj\Debug\Server.exe
 C:\Users\Robin\documents\visual studio 2013\Projects\Server\Server\obj\Debug\Server.pdb
+<<<<<<< HEAD
 C:\Users\Robin\Documents\Visual Studio 2013\Projects\Projet Chat C#\Server\bin\Debug\Server.exe.config
 C:\Users\Robin\Documents\Visual Studio 2013\Projects\Projet Chat C#\Server\obj\Debug\Server.exe
 C:\Users\Robin\Documents\Visual Studio 2013\Projects\Projet Chat C#\Server\obj\Debug\Server.pdb
 C:\Users\Robin\Documents\Visual Studio 2013\Projects\Projet Chat C#\Server\bin\Debug\Server.exe
 C:\Users\Robin\Documents\Visual Studio 2013\Projects\Projet Chat C#\Server\bin\Debug\Server.pdb
 C:\Users\Robin\Documents\Visual Studio 2013\Projects\Projet Chat C#\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+=======
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Server\bin\Debug\Server.exe.config
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Server\obj\Debug\Server.exe
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Server\obj\Debug\Server.pdb
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Server\bin\Debug\Server.exe
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Server\bin\Debug\Server.pdb
+C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+>>>>>>> 38c011e1f29197a4efa1a59607873628a14b159d
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Server\bin\Debug\Server.exe.config
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Server\obj\Debug\Server.exe
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Server\obj\Debug\Server.pdb
