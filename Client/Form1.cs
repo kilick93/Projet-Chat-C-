@@ -25,6 +25,7 @@ namespace Client
             IPEndPoint ipep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
             Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             server.Connect(ipep);
+<<<<<<< HEAD
              * */
         }
 
