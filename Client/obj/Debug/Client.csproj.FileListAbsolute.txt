@@ -1,0 +1,9 @@
+C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\bin\Debug\Client.exe.config
+C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\bin\Debug\Client.exe
+C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\bin\Debug\Client.pdb
+C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\obj\Debug\Client.Form1.resources
+C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\obj\Debug\Client.csproj.GenerateResource.Cache
+C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\obj\Debug\Client.exe
+C:\Users\Robin\documents\visual studio 2013\Projects\Server\Client\obj\Debug\Client.pdb
