@@ -25,7 +25,6 @@ namespace Client
             IPEndPoint ipep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
             Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             server.Connect(ipep);
-<<<<<<< HEAD
              * */
         }
 
@@ -47,6 +46,9 @@ namespace Client
             IPEndPoint ipep = new IPEndPoint(IPAddress.Parse(text_IP.Text), int.Parse(text_Port.Text));
             Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             server.Connect(ipep);
+            byte[] msg = Encoding.UTF8.GetBytes("This is a test");
+            byte[] bytes = new byte[256];
+            server.Send(msg, SocketFlags.None);
         }
 
     }

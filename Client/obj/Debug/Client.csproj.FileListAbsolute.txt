@@ -16,3 +16,21 @@ C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\obj\Debug\Client
 C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\obj\Debug\Client.csproj.GenerateResource.Cache
 C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\obj\Debug\Client.exe
 C:\Users\Mathieu\Desktop\Projet C#\Projet\Projet-Chat-C-\Client\obj\Debug\Client.pdb
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Client\bin\Debug\Client.exe.config
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Client\bin\Debug\Client.exe
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Client\bin\Debug\Client.pdb
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Client\obj\Debug\Client.Form1.resources
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Client\obj\Debug\Client.csproj.GenerateResource.Cache
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Client\obj\Debug\Client.exe
+C:\Users\Robin\Documents\GitHub\Projet Chat C#\Client\obj\Debug\Client.pdb
+C:\Users\Robin\Desktop\Projet Chat C#\Client\bin\Debug\Client.exe.config
+C:\Users\Robin\Desktop\Projet Chat C#\Client\bin\Debug\Client.exe
+C:\Users\Robin\Desktop\Projet Chat C#\Client\bin\Debug\Client.pdb
+C:\Users\Robin\Desktop\Projet Chat C#\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\Robin\Desktop\Projet Chat C#\Client\obj\Debug\Client.Form1.resources
+C:\Users\Robin\Desktop\Projet Chat C#\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\Robin\Desktop\Projet Chat C#\Client\obj\Debug\Client.csproj.GenerateResource.Cache
+C:\Users\Robin\Desktop\Projet Chat C#\Client\obj\Debug\Client.exe
+C:\Users\Robin\Desktop\Projet Chat C#\Client\obj\Debug\Client.pdb
