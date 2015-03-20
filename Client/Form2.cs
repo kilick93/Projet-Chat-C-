@@ -68,12 +68,12 @@ namespace Client
                     {
                         Console.WriteLine("Check Data2");
                         // si le socket a des données à lire
-                        if(true)
+                        if(clientsocket.Available>0)
                         {
                             Console.WriteLine("Check Data3");
                             string msgrecu = null;
-                            /*
-                            while(true)
+                            
+                            while(clientsocket.Available>0)
                             {
                                 Console.WriteLine("Check Data4");
                                 try
@@ -89,7 +89,7 @@ namespace Client
                                 {
                                     MessageBox.Show("Check data" + E.Message);
                                 }
-                            }*/
+                            }
                             try
                             {
                                 Console.WriteLine("Check Data6");
