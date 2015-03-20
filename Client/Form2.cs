@@ -16,7 +16,7 @@ namespace Client
     {
         public Socket clientsocket;
         public Thread DataReceived = null;
-        private string content = " helloooo";
+        private string content = null;
         public Form2(Socket socket)
         {
             this.clientsocket = socket;
@@ -61,24 +61,24 @@ namespace Client
             try
             
             {
-                Console.WriteLine("Check Data1");
+            
                 while(true)
                 {
                     if(clientsocket.Connected)
                     {
-                        Console.WriteLine("Check Data2");
+                    
                         // si le socket a des données à lire
                         if(clientsocket.Available>0)
                         {
-                            Console.WriteLine("Check Data3");
+                           
                             string msgrecu = null;
-                            
+                            content = null;
                             while(clientsocket.Available>0)
                             {
-                                Console.WriteLine("Check Data4");
+                          
                                 try
                                 {
-                                    Console.WriteLine("Check Data5");
+                            
                                     byte[] msg = new Byte[clientsocket.Available];
                                     // reception du message
                                     clientsocket.Receive(msg, 0, clientsocket.Available, SocketFlags.None);
@@ -92,14 +92,13 @@ namespace Client
                             }
                             try
                             {
-                                Console.WriteLine("Check Data6");
+                 
                                 /*MethodInvoker action = delegate
                                 { richTextBox1.AppendText(Environment.NewLine + DateTime.Today + content); };
                                 richTextBox1.Invoke(action);*/
                                 if (richTextBox1.InvokeRequired)
                                 {
                                     TextBoxInvokeHandler MethodeDelegate = new TextBoxInvokeHandler(FonctionTextBox);
-                                    this.Invoke(MethodeDelegate,content);
                                     IAsyncResult iar  = this.BeginInvoke(MethodeDelegate,content);
                                     this.EndInvoke(iar);
                                 }
@@ -111,7 +110,7 @@ namespace Client
                             }
                             catch(Exception E)
                             {
-                                Console.WriteLine("Check Data7");
+ 
                                 MessageBox.Show(E.Message);
                             }
                             
