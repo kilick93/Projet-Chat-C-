@@ -36,7 +36,7 @@ namespace Client
 
         private void SendMessage(object sender, EventArgs e)
         {
-            richTextBox1.AppendText(Environment.NewLine + DateTime.Today + content);
+            //richTextBox1.AppendText(Environment.NewLine + DateTime.Today + content);
             if(clientsocket == null ||  !clientsocket.Connected)
             {
                 MessageBox.Show("Vous n'êtes pas connecté");
@@ -59,20 +59,26 @@ namespace Client
         private void CheckData()
         {
             try
+            
             {
+                Console.WriteLine("Check Data1");
                 while(true)
                 {
                     if(clientsocket.Connected)
                     {
+                        Console.WriteLine("Check Data2");
                         // si le socket a des données à lire
                         if(true)
                         {
+                            Console.WriteLine("Check Data3");
                             string msgrecu = null;
-                            
+                            /*
                             while(true)
                             {
+                                Console.WriteLine("Check Data4");
                                 try
                                 {
+                                    Console.WriteLine("Check Data5");
                                     byte[] msg = new Byte[clientsocket.Available];
                                     // reception du message
                                     clientsocket.Receive(msg, 0, clientsocket.Available, SocketFlags.None);
@@ -83,17 +89,32 @@ namespace Client
                                 {
                                     MessageBox.Show("Check data" + E.Message);
                                 }
-                                try
+                            }*/
+                            try
+                            {
+                                Console.WriteLine("Check Data6");
+                                /*MethodInvoker action = delegate
+                                { richTextBox1.AppendText(Environment.NewLine + DateTime.Today + content); };
+                                richTextBox1.Invoke(action);*/
+                                if (richTextBox1.InvokeRequired)
                                 {
-                                    richTextBox1.Invoke(new UpdateTextCallback(this.UpdateText), new object[]{"Hello"});
-                                    Console.WriteLine("Check Data");
-                                    this.BringToFront();
+                                    TextBoxInvokeHandler MethodeDelegate = new TextBoxInvokeHandler(FonctionTextBox);
+                                    this.Invoke(MethodeDelegate,content);
+                                    IAsyncResult iar  = this.BeginInvoke(MethodeDelegate,content);
+                                    this.EndInvoke(iar);
                                 }
-                                catch(Exception E)
+                                else
                                 {
-                                    MessageBox.Show(E.Message);
+                                   FonctionTextBox(content);
                                 }
+
                             }
+                            catch(Exception E)
+                            {
+                                Console.WriteLine("Check Data7");
+                                MessageBox.Show(E.Message);
+                            }
+                            
                         }
                     }
                 }
@@ -111,13 +132,13 @@ namespace Client
             richTextBox1.SelectionStart = richTextBox1.Rtf.Length;
             richTextBox1.Focus();
         }
+        private delegate void TextBoxInvokeHandler(string msg);
 
-        private void UpdateText(string text)
+        private void FonctionTextBox(string msg)
         {
-            richTextBox1.AppendText(Environment.NewLine + DateTime.Today + content);
-
+            this.richTextBox1.AppendText(msg + "\n");
         }
 
-        public delegate void UpdateTextCallback(string text);
+
     }
 }
