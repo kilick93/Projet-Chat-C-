@@ -35,6 +35,8 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnSendPic = new System.Windows.Forms.Button();
+            this.ofdPictureChooser = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -50,14 +52,14 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(153, 365);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(459, 20);
+            this.textBox1.Size = new System.Drawing.Size(351, 20);
             this.textBox1.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(632, 365);
+            this.button1.Location = new System.Drawing.Point(510, 365);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 20);
+            this.button1.Size = new System.Drawing.Size(102, 20);
             this.button1.TabIndex = 2;
             this.button1.Text = "Send Message";
             this.button1.UseVisualStyleBackColor = true;
@@ -97,11 +99,27 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Connected Users";
             // 
+            // btnSendPic
+            // 
+            this.btnSendPic.Location = new System.Drawing.Point(632, 362);
+            this.btnSendPic.Name = "btnSendPic";
+            this.btnSendPic.Size = new System.Drawing.Size(131, 23);
+            this.btnSendPic.TabIndex = 7;
+            this.btnSendPic.Text = "Join a picture";
+            this.btnSendPic.UseVisualStyleBackColor = true;
+            this.btnSendPic.Click += new System.EventHandler(this.btnSendPic_Click);
+            // 
+            // ofdPictureChooser
+            // 
+            this.ofdPictureChooser.FileName = "Image Files|*.jpg;*.jpeg;*.png";
+            this.ofdPictureChooser.Title = "Choose a picture";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 397);
+            this.Controls.Add(this.btnSendPic);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox2);
@@ -125,5 +143,7 @@
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSendPic;
+        private System.Windows.Forms.OpenFileDialog ofdPictureChooser;
     }
 }

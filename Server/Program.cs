@@ -62,9 +62,20 @@ namespace Server
                     for (int i = 0; i < readList.Count; i++)
                     {
                         // Enregistrement du message
-                        message = new byte[((Socket)readList[i]).Available];
-                        ((Socket)readList[i]).Receive(message, SocketFlags.None);
-                        Console.WriteLine(Encoding.UTF8.GetString(message));
+                        
+                        try
+                        {
+                            message = new byte[((Socket)readList[i]).Available];
+                            ((Socket)readList[i]).Receive(message, SocketFlags.None);
+                            Console.WriteLine(Encoding.UTF8.GetString(message));
+                        }
+                        catch(SocketException e)
+                        {
+                            Console.WriteLine(e.Message);
+                            ((Socket)acceptList[i]).Close();
+                            acceptList.Remove(((Socket)acceptList[i]));
+                        }
+                        
                         // Création d'un nouveau thread qui va renvoyer ce message à tous les clients
                         Thread forwardall = new Thread(new ThreadStart(forward));
                         // Démarrage du thread

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using CustomLibrary;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -17,10 +20,12 @@ namespace Client
         public Socket clientsocket;
         public Thread DataReceived = null;
         private string content = null;
+        public msg mymessage;
         public Form2(Socket socket)
         {
             this.clientsocket = socket;
             InitializeComponent();
+            mymessage = new msg();
             //richTextBox1.AppendText(Environment.NewLine + DateTime.Today + content);
             try
 	        {
@@ -40,13 +45,15 @@ namespace Client
             if(clientsocket == null ||  !clientsocket.Connected)
             {
                 MessageBox.Show("Vous n'êtes pas connecté");
-            }
+            }   
             try
             {
                 if(textBox1.Text!="")
                 {
-                    string txt = textBox1.Text;
-                    byte[] msg = Encoding.UTF8.GetBytes(txt);
+                    mymessage.texte = textBox1.Text;
+                    mymessage.pseudo = "jeanpaul";
+                    string output = JsonConvert.SerializeObject(mymessage);
+                    byte[] msg = Encoding.UTF8.GetBytes(output);
                     clientsocket.Send(msg, SocketFlags.None);
                 }
             }
@@ -83,7 +90,26 @@ namespace Client
                                     // reception du message
                                     clientsocket.Receive(msg, 0, clientsocket.Available, SocketFlags.None);
                                     msgrecu = System.Text.Encoding.UTF8.GetString(msg).Trim();
-                                    content += msgrecu;
+                                    msg messagerecu = JsonConvert.DeserializeObject<msg>(msgrecu);
+                                    content += messagerecu.pseudo + " a écrit : " + messagerecu.texte;
+                                    /*try
+                                    {
+                                        Clipboard.SetDataObject(messagerecu.image);
+                                        DataFormats.Format myformat = DataFormats.GetFormat(DataFormats.Bitmap);
+                                        if(richTextBox1.CanPaste(myformat))
+                                        {
+                                            richTextBox1.Paste(myformat);
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Can't paste");
+                                        }
+                                    }
+                                    catch(Exception e)
+                                    {
+                                        Console.WriteLine(e.Message);
+                                    }*/
+                                    
                                 }
                                 catch(SocketException E)
                                 {
@@ -136,6 +162,24 @@ namespace Client
         private void FonctionTextBox(string msg)
         {
             this.richTextBox1.AppendText(msg + "\n");
+        }
+
+        private void btnSendPic_Click(object sender, EventArgs e)
+        {
+            ofdPictureChooser.Filter = "Image Files|*.jpg;*.jpeg;*.png";
+            if(ofdPictureChooser.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap bmp = new Bitmap(ofdPictureChooser.FileName);
+                Console.WriteLine(ofdPictureChooser.FileName);
+                mymessage.image = ImageToByte(bmp);
+
+            }
+        }
+
+        public static byte[] ImageToByte(Image img)
+        {
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(img, typeof(byte[]));
         }
 
 
