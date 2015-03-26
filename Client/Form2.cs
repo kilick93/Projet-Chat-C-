@@ -182,6 +182,11 @@ namespace Client
             return (byte[])converter.ConvertTo(img, typeof(byte[]));
         }
 
+        private void richTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.LinkText);
+        }
+
 
     }
 }
