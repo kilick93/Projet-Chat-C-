@@ -1,39 +1,10 @@
-C:\Users\Robin\Desktop\Projet Chat C#\Server\bin\Debug\Server.exe.config
-C:\Users\Robin\Desktop\Projet Chat C#\Server\bin\Debug\Server.exe
-C:\Users\Robin\Desktop\Projet Chat C#\Server\bin\Debug\Server.pdb
-C:\Users\Robin\Desktop\Projet Chat C#\Server\obj\Debug\Server.exe
-C:\Users\Robin\Desktop\Projet Chat C#\Server\obj\Debug\Server.pdb
-C:\Users\Robin\Desktop\Projet Chat C#\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Server.exe.config
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Server.exe
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Server.pdb
-C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
-C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\obj\Debug\Server.exe
-C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\obj\Debug\Server.pdb
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Server.exe.config
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Server\obj\Debug\Server.exe
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Server\obj\Debug\Server.pdb
-C:\Users\Robin\Desktop\Projet-Chat-C-\Server\bin\Debug\Server.exe.config
-C:\Users\Robin\Desktop\Projet-Chat-C-\Server\obj\Debug\Server.exe
-C:\Users\Robin\Desktop\Projet-Chat-C-\Server\obj\Debug\Server.pdb
-C:\Users\Robin\Desktop\Projet-Chat-C-\Server\bin\Debug\Server.exe
-C:\Users\Robin\Desktop\Projet-Chat-C-\Server\bin\Debug\Server.pdb
-C:\Users\Robin\Desktop\Projet-Chat-C-\Server\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Robin\Desktop\Projet-Chat-C-\Server\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Robin\Desktop\Projet-Chat-C-\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
-C:\Users\Robin\Desktop\Projet-Chat-C-\Server\bin\Debug\CustomLibrary.dll
-C:\Users\Robin\Desktop\Projet-Chat-C-\Server\bin\Debug\CustomLibrary.pdb
-<<<<<<< HEAD
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\CustomLibrary.dll
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\CustomLibrary.pdb
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Newtonsoft.Json.xml
-=======
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Server.exe
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Server.pdb
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\CustomLibrary.dll
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\CustomLibrary.pdb
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
->>>>>>> origin/master
+C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\obj\Debug\Server.exe
+C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\obj\Debug\Server.pdb
