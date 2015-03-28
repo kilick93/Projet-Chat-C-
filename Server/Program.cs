@@ -92,9 +92,9 @@ namespace Server
                             if (messagerecu.type == 5)
                             {
                                 PseudoList.Remove(messagerecu.pseudo);
-                                ((Socket)acceptList[i]).Shutdown(SocketShutdown.Both);
-                                ((Socket)acceptList[i]).Close();
-                                acceptList.Remove(((Socket)acceptList[i]));
+                                ((Socket)readList[i]).Shutdown(SocketShutdown.Both);
+                                ((Socket)readList[i]).Close();
+                                acceptList.Remove(((Socket)readList[i]));
                                 Console.WriteLine("Deconnexion Client");
                             }
                         }
