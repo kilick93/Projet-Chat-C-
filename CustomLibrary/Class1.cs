@@ -16,6 +16,7 @@ namespace CustomLibrary
     {
         public string texte { get; set; }
         public string pseudo { get; set; }
+        public int canal { get; set; }
         public DateTime time { get; set; }
         // 1 pour 1ere connexion
         // 2 pour texte
