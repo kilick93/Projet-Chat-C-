@@ -21,9 +21,11 @@ namespace Client
         public Thread DataReceived = null;
         private string content = null;
         public msg mymessage;
-        public Form2(Socket socket)
+        public string pseudo = null;
+        public Form2(Socket socket, string name)
         {
             this.clientsocket = socket;
+            this.pseudo=name;
             InitializeComponent();
             mymessage = new msg();
             //richTextBox1.AppendText(Environment.NewLine + DateTime.Today + content);
@@ -51,7 +53,8 @@ namespace Client
                 if(textBox1.Text!="")
                 {
                     mymessage.texte = textBox1.Text;
-                    mymessage.pseudo = "jeanpaul";
+                    mymessage.pseudo = pseudo;
+                    mymessage.type = 2;
                     string output = JsonConvert.SerializeObject(mymessage);
                     byte[] msg = Encoding.UTF8.GetBytes(output);
                     clientsocket.Send(msg, SocketFlags.None);
@@ -91,25 +94,11 @@ namespace Client
                                     clientsocket.Receive(msg, 0, clientsocket.Available, SocketFlags.None);
                                     msgrecu = System.Text.Encoding.UTF8.GetString(msg).Trim();
                                     msg messagerecu = JsonConvert.DeserializeObject<msg>(msgrecu);
-                                    content += messagerecu.pseudo + " a écrit : " + messagerecu.texte;
-                                    /*try
+                                    if(messagerecu.type==2)
                                     {
-                                        Clipboard.SetDataObject(messagerecu.image);
-                                        DataFormats.Format myformat = DataFormats.GetFormat(DataFormats.Bitmap);
-                                        if(richTextBox1.CanPaste(myformat))
-                                        {
-                                            richTextBox1.Paste(myformat);
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("Can't paste");
-                                        }
+                                        content += messagerecu.pseudo + " a écrit : " + messagerecu.texte;
                                     }
-                                    catch(Exception e)
-                                    {
-                                        Console.WriteLine(e.Message);
-                                    }*/
-                                    
+                                                                   
                                 }
                                 catch(SocketException E)
                                 {

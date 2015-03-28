@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CustomLibrary;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,10 +19,18 @@ namespace Server
         public ArrayList acceptList = new ArrayList();
         public ArrayList readList = new ArrayList();
         byte[] message;
+        List<string> PseudoList { get; set; }
+        public msg messagerecu = new msg();
+
+        public server()
+        {
+            this.PseudoList = new List<string>();
+        }
 
         // démarrage du serveur
         public void start()
         {
+            
             IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Any, 8000);
             Socket newsock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             Thread readclient = new Thread(new ThreadStart(readMessageClient));
@@ -65,9 +75,20 @@ namespace Server
                         
                         try
                         {
+                            
                             message = new byte[((Socket)readList[i]).Available];
                             ((Socket)readList[i]).Receive(message, SocketFlags.None);
                             Console.WriteLine(Encoding.UTF8.GetString(message));
+                            messagerecu = JsonConvert.DeserializeObject<msg>(Encoding.UTF8.GetString(message));
+                            
+                            if (messagerecu.type == 1)
+                            {
+                                
+                                if (!checkPseudo(messagerecu.pseudo, ((Socket)readList[i])))
+                                {
+                                    //break;
+                                }
+                            }
                         }
                         catch(SocketException e)
                         {
@@ -75,6 +96,7 @@ namespace Server
                             ((Socket)acceptList[i]).Close();
                             acceptList.Remove(((Socket)acceptList[i]));
                         }
+                        
                         
                         // Création d'un nouveau thread qui va renvoyer ce message à tous les clients
                         Thread forwardall = new Thread(new ThreadStart(forward));
@@ -97,13 +119,63 @@ namespace Server
                 {
                     try
                     {
-                        ((Socket)acceptList[i]).Send(message, SocketFlags.None);
+                        messagerecu = JsonConvert.DeserializeObject<msg>(Encoding.UTF8.GetString(message));
+                        if(messagerecu.type==2)
+                        {
+                            ((Socket)acceptList[i]).Send(message, SocketFlags.None);
+                        }
                     }
                     catch
                     {
                     }
                 }
             }
+        }
+        private bool checkPseudo(string pseudo, Socket server)
+        {
+            try
+            {
+                
+                if (PseudoList.Contains(pseudo))
+                {
+                    Console.WriteLine("Deconnexion du client");
+                    msg deconnexion = new msg();
+                    deconnexion.type = 5;
+                    string output = JsonConvert.SerializeObject(deconnexion);
+                    Console.WriteLine(output);
+                    byte[] msg = Encoding.UTF8.GetBytes(output);
+                    try
+                    {
+
+                        ((Socket)acceptList[acceptList.IndexOf(server)]).Send(msg);
+                    }
+                    catch
+                    {
+                    }
+                    //Le pseudo est déjà pris, on refuse la connexion.
+                    ((Socket)acceptList[acceptList.IndexOf(server)]).Shutdown(SocketShutdown.Both);
+                    ((Socket)acceptList[acceptList.IndexOf(server)]).Close();
+                    acceptList.Remove(server);
+                    Console.WriteLine("Pseudo déjà pris");
+                    return false;
+                }
+                else
+                {
+                    msg test = new msg();
+                    test.type = 2;
+                    string sortie = JsonConvert.SerializeObject(test);
+                    byte[] test2 = Encoding.UTF8.GetBytes(sortie);
+                    ((Socket)acceptList[acceptList.IndexOf(server)]).Send(test2);
+                    PseudoList.Add(pseudo);
+                    return true;
+                }
+            }
+            catch(Exception E)
+            {
+                Console.WriteLine(E.Message);
+                return false;
+            }
+                   
         }
     }
     class Program

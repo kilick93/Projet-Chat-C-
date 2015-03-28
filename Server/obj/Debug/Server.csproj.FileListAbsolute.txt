@@ -23,3 +23,7 @@ C:\Users\Robin\Desktop\Projet-Chat-C-\Server\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Robin\Desktop\Projet-Chat-C-\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
 C:\Users\Robin\Desktop\Projet-Chat-C-\Server\bin\Debug\CustomLibrary.dll
 C:\Users\Robin\Desktop\Projet-Chat-C-\Server\bin\Debug\CustomLibrary.pdb
+C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\CustomLibrary.dll
+C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\CustomLibrary.pdb
+C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Server\bin\Debug\Newtonsoft.Json.xml
