@@ -89,9 +89,18 @@ namespace Server
                                     //break;
                                 }
                             }
+                            if (messagerecu.type == 5)
+                            {
+                                PseudoList.Remove(messagerecu.pseudo);
+                                ((Socket)acceptList[i]).Shutdown(SocketShutdown.Both);
+                                ((Socket)acceptList[i]).Close();
+                                acceptList.Remove(((Socket)acceptList[i]));
+                                Console.WriteLine("Deconnexion Client");
+                            }
                         }
                         catch(SocketException e)
                         {
+                            PseudoList.Remove(messagerecu.pseudo);
                             Console.WriteLine(e.Message);
                             ((Socket)acceptList[i]).Close();
                             acceptList.Remove(((Socket)acceptList[i]));
@@ -99,7 +108,8 @@ namespace Server
                         
                         
                         // Création d'un nouveau thread qui va renvoyer ce message à tous les clients
-                        Thread forwardall = new Thread(new ThreadStart(forward));
+                        //Thread forwardall = new Thread(new ThreadStart(forward,messagerecu));
+                        Thread forwardall = new Thread(() => forward(messagerecu));
                         // Démarrage du thread
                         forwardall.Start();
                         // Dès que le thread a terminé sa tâche, le thread est fermé
@@ -111,7 +121,7 @@ namespace Server
             }
         }
         // Envoi du message à tous les clients connectés
-        public void forward()
+        public void forward(msg messagereceived)
         {
             for (int i = 0; i < acceptList.Count; i++)
             {
@@ -119,8 +129,8 @@ namespace Server
                 {
                     try
                     {
-                        messagerecu = JsonConvert.DeserializeObject<msg>(Encoding.UTF8.GetString(message));
-                        if(messagerecu.type==2)
+                        messagereceived = JsonConvert.DeserializeObject<msg>(Encoding.UTF8.GetString(message));
+                        if(messagereceived.type==2 || messagereceived.type==6)
                         {
                             ((Socket)acceptList[i]).Send(message, SocketFlags.None);
                         }
@@ -163,9 +173,11 @@ namespace Server
                 {
                     msg test = new msg();
                     test.type = 2;
+                    //test.texte = pseudo + " s'est connecté";
                     string sortie = JsonConvert.SerializeObject(test);
                     byte[] test2 = Encoding.UTF8.GetBytes(sortie);
                     ((Socket)acceptList[acceptList.IndexOf(server)]).Send(test2);
+                    //forward(test);
                     PseudoList.Add(pseudo);
                     return true;
                 }
@@ -177,6 +189,7 @@ namespace Server
             }
                    
         }
+
     }
     class Program
     {

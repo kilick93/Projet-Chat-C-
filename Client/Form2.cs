@@ -98,6 +98,10 @@ namespace Client
                                     {
                                         content += messagerecu.pseudo + " a écrit : " + messagerecu.texte;
                                     }
+                                    else if (messagerecu.type==6)
+                                    {
+                                        content += messagerecu.texte;
+                                    }
                                                                    
                                 }
                                 catch(SocketException E)
@@ -176,6 +180,24 @@ namespace Client
             System.Diagnostics.Process.Start(e.LinkText);
         }
 
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            msg deconnexion = new msg();
+            SendMessage(deconnexion,5);
+            deconnexion.texte = pseudo + " s'est deconnecté";
+            SendMessage(deconnexion,6);
+        }
+
+        void SendMessage(msg message, int type)
+        {
+            
+            message.pseudo = pseudo;
+            message.type = type;
+            //deconnexion.texte = "deconnexion client";
+            string output = JsonConvert.SerializeObject(message);
+            byte[] msg = Encoding.UTF8.GetBytes(output);
+            clientsocket.Send(msg, SocketFlags.None);
+        }
 
     }
 }
