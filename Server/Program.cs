@@ -19,6 +19,7 @@ namespace Server
         public ArrayList acceptList = new ArrayList();
         public ArrayList readList = new ArrayList();
         byte[] message;
+        byte[] liste;
         List<string> PseudoList { get; set; }
         public msg messagerecu = new msg();
 
@@ -86,7 +87,7 @@ namespace Server
                                 
                                 if (!checkPseudo(messagerecu.pseudo, ((Socket)readList[i])))
                                 {
-                                    //break;
+                                    //Envoi Pseudo List updated;
                                 }
                             }
                             if (messagerecu.type == 5)
@@ -96,6 +97,7 @@ namespace Server
                                 ((Socket)readList[i]).Close();
                                 acceptList.Remove(((Socket)readList[i]));
                                 Console.WriteLine("Deconnexion Client");
+                                //Envoid Pseudo List Updated
                             }
                         }
                         catch(SocketException e)

@@ -31,12 +31,12 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSendPic = new System.Windows.Forms.Button();
             this.ofdPictureChooser = new System.Windows.Forms.OpenFileDialog();
+            this.listViewChannel = new System.Windows.Forms.ListView();
+            this.listViewUsers = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -65,22 +65,6 @@
             this.button1.Text = "Send Message";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.SendMessage);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(632, 42);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(131, 303);
-            this.listBox1.TabIndex = 3;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(12, 40);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(118, 342);
-            this.listBox2.TabIndex = 4;
             // 
             // label1
             // 
@@ -115,16 +99,32 @@
             this.ofdPictureChooser.FileName = "Image Files|*.jpg;*.jpeg;*.png";
             this.ofdPictureChooser.Title = "Choose a picture";
             // 
+            // listViewChannel
+            // 
+            this.listViewChannel.Location = new System.Drawing.Point(17, 40);
+            this.listViewChannel.Name = "listViewChannel";
+            this.listViewChannel.Size = new System.Drawing.Size(102, 345);
+            this.listViewChannel.TabIndex = 8;
+            this.listViewChannel.UseCompatibleStateImageBehavior = false;
+            // 
+            // listViewUsers
+            // 
+            this.listViewUsers.Location = new System.Drawing.Point(633, 40);
+            this.listViewUsers.Name = "listViewUsers";
+            this.listViewUsers.Size = new System.Drawing.Size(129, 304);
+            this.listViewUsers.TabIndex = 9;
+            this.listViewUsers.UseCompatibleStateImageBehavior = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 397);
+            this.Controls.Add(this.listViewUsers);
+            this.Controls.Add(this.listViewChannel);
             this.Controls.Add(this.btnSendPic);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.richTextBox1);
@@ -141,11 +141,11 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSendPic;
         private System.Windows.Forms.OpenFileDialog ofdPictureChooser;
+        private System.Windows.Forms.ListView listViewChannel;
+        private System.Windows.Forms.ListView listViewUsers;
     }
 }
