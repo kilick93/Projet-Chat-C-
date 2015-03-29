@@ -21,6 +21,8 @@ namespace Client
         public Thread DataReceived = null;
         private string content = null;
         public msg mymessage;
+        public msg connexion;
+        public msg deconnexion;
         public string pseudo = null;
         private int canal;
         List<int> channels;
@@ -31,6 +33,14 @@ namespace Client
             this.pseudo=name;
             InitializeComponent();
             mymessage = new msg();
+            connexion = new msg();
+            deconnexion = new msg();
+            deconnexion.texte = pseudo + " s'est deconnecté";
+            deconnexion.pseudo = pseudo;
+            deconnexion.canal = canal;
+            connexion.pseudo=pseudo;
+            connexion.canal=canal;
+            connexion.texte=pseudo+" s'est connecté";
             channels = new List<int>();
             channels.Add(1);
             channels.Add(2);
@@ -41,6 +51,8 @@ namespace Client
             this.canal = 1;
             this.Label_Canal.Text = 1.ToString();
             refreshChannelView();
+            SendMessage(connexion, 6, canal);
+
             //richTextBox1.AppendText(Environment.NewLine + DateTime.Today + content);
             try
 	        {   
@@ -111,7 +123,6 @@ namespace Client
                                     messagerecu = JsonConvert.DeserializeObject<msg>(msgrecu);
                                     if (messagerecu.canal == canal)
                                     {
-
 
                                         if (messagerecu.type == 2)
                                         {
@@ -216,17 +227,16 @@ namespace Client
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            msg deconnexion = new msg();
-            deconnexion.texte = pseudo + " s'est deconnecté";
-            SendMessage(deconnexion,6);
-            SendMessage(deconnexion,5);
+            SendMessage(deconnexion,6,canal);
+            SendMessage(deconnexion,5,canal);
         }
 
-        void SendMessage(msg message, int type)
+        void SendMessage(msg message, int type,int canal)
         {
             
             message.pseudo = pseudo;
             message.type = type;
+            message.canal = canal;
             string output = JsonConvert.SerializeObject(message);
             byte[] msg = Encoding.UTF8.GetBytes(output);
             clientsocket.Send(msg, SocketFlags.None);
@@ -254,8 +264,10 @@ namespace Client
                 if(listViewChannel.SelectedIndices[0]+1 != canal)
                 {
                     ClearTextBox();
+                    SendMessage(deconnexion, 6, canal);
                     this.canal = listViewChannel.SelectedIndices[0] + 1;
                     this.Label_Canal.Text = (listViewChannel.SelectedIndices[0] + 1).ToString();
+                    SendMessage(connexion, 6, canal);
                 }
             }
         }

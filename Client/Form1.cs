@@ -91,7 +91,7 @@ namespace Client
                     {
                         Console.WriteLine("Creation Form 2");
                         Form2 form2 = new Form2(server, Pseudo);
-                        SendMessage(Pseudo + " s'est connecté",6);
+                        //SendMessage(Pseudo + " s'est connecté",6);
                         if (form2.ShowDialog() == DialogResult.OK)
                         {
 
