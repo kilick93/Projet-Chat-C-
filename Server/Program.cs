@@ -93,7 +93,6 @@ namespace Server
                             }
                             messagerecu.pseudolist = PseudoList;
                             string output = JsonConvert.SerializeObject(messagerecu);
-                            //Console.WriteLine(output);
                             message = Encoding.UTF8.GetBytes(output);
                             if (messagerecu.type == 1)
                             {
@@ -150,7 +149,7 @@ namespace Server
                         {
                             messagereceived.pseudolist = PseudoList;
                             string output = JsonConvert.SerializeObject(messagereceived);
-                            Console.WriteLine(output);
+                            //Console.WriteLine(output);
                             message = Encoding.UTF8.GetBytes(output);
                             ((Socket)acceptList[i]).Send(message, SocketFlags.None);
                         }

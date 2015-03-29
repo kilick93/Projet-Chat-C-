@@ -16,3 +16,4 @@ C:\Users\Robin\Desktop\ii\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsoft.Json
 C:\Users\Robin\Desktop\ii\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Robin\Desktop\ii\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.dll
 C:\Users\Robin\Desktop\ii\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.pdb
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.csprojResolveAssemblyReference.cache
