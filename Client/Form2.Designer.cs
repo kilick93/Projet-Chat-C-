@@ -84,12 +84,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(629, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 13);
+            this.label2.Size = new System.Drawing.Size(152, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Connected Users";
+            this.label2.Text = "Connected users on the server";
             // 
             // btnSendPic
             // 
+            this.btnSendPic.Enabled = false;
             this.btnSendPic.Location = new System.Drawing.Point(632, 362);
             this.btnSendPic.Name = "btnSendPic";
             this.btnSendPic.Size = new System.Drawing.Size(131, 23);

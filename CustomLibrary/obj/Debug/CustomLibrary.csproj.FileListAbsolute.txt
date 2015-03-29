@@ -10,3 +10,9 @@ C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsof
 C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.dll
 C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.pdb
+C:\Users\Robin\Desktop\ii\Projet-Chat-C-\CustomLibrary\bin\Debug\CustomLibrary.dll
+C:\Users\Robin\Desktop\ii\Projet-Chat-C-\CustomLibrary\bin\Debug\CustomLibrary.pdb
+C:\Users\Robin\Desktop\ii\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Robin\Desktop\ii\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Robin\Desktop\ii\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.dll
+C:\Users\Robin\Desktop\ii\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.pdb

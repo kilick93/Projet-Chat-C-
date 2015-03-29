@@ -83,7 +83,14 @@ namespace Server
                             message = new byte[((Socket)readList[i]).Available];
                             ((Socket)readList[i]).Receive(message, SocketFlags.None);
                             Console.WriteLine(Encoding.UTF8.GetString(message));
-                            messagerecu = JsonConvert.DeserializeObject<msg>(Encoding.UTF8.GetString(message));
+                            try
+                            {
+                                messagerecu = JsonConvert.DeserializeObject<msg>(Encoding.UTF8.GetString(message));
+                            }
+                            catch(JsonException e)
+                            {
+                                Console.WriteLine(e.Message);
+                            }
                             messagerecu.pseudolist = PseudoList;
                             string output = JsonConvert.SerializeObject(messagerecu);
                             //Console.WriteLine(output);
@@ -93,8 +100,7 @@ namespace Server
                                 
                                 if (!checkPseudo(messagerecu.pseudo, ((Socket)readList[i])))
                                 {
-                                    
-                                    //Envoi Pseudo List updated;
+
                                 }
                             }
                             if (messagerecu.type == 5)
@@ -105,8 +111,6 @@ namespace Server
                                 acceptList.Remove(((Socket)readList[i]));
                                 Console.WriteLine("Deconnexion Client");
                                 messagerecu.pseudolist = PseudoList;
-                                //SendPseudoList();
-                                //Envoid Pseudo List Updated
                             }
                         }
                         catch(SocketException e)
@@ -142,7 +146,7 @@ namespace Server
                     {
 
                         
-                        if(messagereceived.type==2 || messagereceived.type==6)
+                        if(messagereceived.type==2 || messagereceived.type==6 || messagereceived.type == 5)
                         {
                             messagereceived.pseudolist = PseudoList;
                             string output = JsonConvert.SerializeObject(messagereceived);
@@ -206,33 +210,6 @@ namespace Server
                 return false;
             }
                    
-        }
-        private void SendPseudoList()
-        {
-            for (int i = 0; i < acceptList.Count; i++)
-            {
-                if (((Socket)acceptList[i]).Connected)
-                {
-                    try
-                    {
-                        
-                            mylist.texte="Liste des pseudos";
-                            mylist.canal = 0;
-                            mylist.pseudo = "Liste";
-                            mylist.type = 7;
-                            mylist.pseudolist = PseudoList;
-                            string output=JsonConvert.SerializeObject(mylist);
-                            liste = Encoding.Unicode.GetBytes(output);
-                            Console.WriteLine("OK: " +output);
-                            ((Socket)acceptList[i]).Send(liste, SocketFlags.None);
-                        
-                    }   
-                    catch
-                    {
-                    }
-                }
-            }
-            
         }
    
     }

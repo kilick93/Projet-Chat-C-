@@ -11,7 +11,6 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Client
@@ -35,7 +34,7 @@ namespace Client
         {
 
         }
-
+        // Connexion au serveur après avoir renseigné les 3 champs : IP, Port, Pseudo
         private void btn_connect_Click(object sender, EventArgs e)
         {
 

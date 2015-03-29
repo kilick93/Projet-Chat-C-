@@ -66,21 +66,10 @@ namespace Client
             {
                 MessageBox.Show("Erreur démarrage Thread Données reçues du serveur" + E.Message);
             }
-            /*try
-            {
-                UserListReceived = new Thread(new ThreadStart(CheckUser));
-                UserListReceived.IsBackground = true;
-                UserListReceived.Start();
-            }
-            catch (Exception E)
-            {
-                MessageBox.Show("Erreur démarrage Thread Données reçues du serveur" + E.Message);
-            }*/
         }
 
         private void SendMessage(object sender, EventArgs e)
         {
-            //richTextBox1.AppendText(Environment.NewLine + DateTime.Today + content);
             if(clientsocket == null ||  !clientsocket.Connected)
             {
                 MessageBox.Show("Vous n'êtes pas connecté");
@@ -89,6 +78,7 @@ namespace Client
             {
                 try
                 {
+                    //On vérifie qu'un message a été écrit
                     if (textBox1.Text != "")
                     {
                         mymessage.texte = textBox1.Text;
@@ -109,7 +99,7 @@ namespace Client
             }
             
         }
-
+        // Thread qui vérifie en permanence si des données ont été envoyés par le serveur
         private void CheckData()
         {
             try
@@ -128,6 +118,7 @@ namespace Client
                             string msgrecu = null;
                             content = null;
                             msg messagerecu = new msg();
+                            // Tant qu'il y a des données à lire
                             while(clientsocket.Available>0)
                             {
 
@@ -217,62 +208,12 @@ namespace Client
             catch(ThreadStateException e)
             {
                 Console.WriteLine(e.Message);
-                //Thread.ResetAbort();
-            }
-
-        }
-
-        private void CheckUser()
-        {
-            try
-            {
-
-                while (true)
-                {
-                    if (clientsocket.Connected)
-                    {
-                        // si le socket a des données à lire
-                        if (clientsocket.Available > 0)
-                        {
-                            string msgrecu = null;
-                            msg messagerecu = new msg();
-                            while (clientsocket.Available > 0)
-                            {
-
-                                try
-                                {
-
-                                    byte[] msg = new Byte[clientsocket.Available];
-                                    // reception du message
-                                    clientsocket.Receive(msg, 0, clientsocket.Available, SocketFlags.None);
-                                    msgrecu = System.Text.Encoding.UTF8.GetString(msg).Trim();
-                                    messagerecu = JsonConvert.DeserializeObject<msg>(msgrecu);
-                                    if (messagerecu.type == 7)
-                                    {
-                                        PseudoList.Clear();
-                                        PseudoList.Add(messagerecu.texte);
-                                        refreshUserView();
-                                    }
-                                    else
-                                    {
-                                        // Do Nothing
-                                    }
-                                }
-                                catch (SocketException E)
-                                {
-                                    MessageBox.Show("Check User" + E.Message);
-                                }
-                            }
-                        }
-                    }
-                    Thread.Sleep(10);
-                }
-            }
-            catch
-            {
                 Thread.ResetAbort();
             }
+
         }
+
+        
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -280,7 +221,7 @@ namespace Client
             richTextBox1.Focus();
         }
         private delegate void TextBoxInvokeHandler(string msg);
-
+        // Mise à jour de la fenêtre de chat
         private void FonctionTextBox(string msg)
         {
             this.richTextBox1.AppendText(msg + "\n");
@@ -290,7 +231,7 @@ namespace Client
         {
             this.richTextBox1.ResetText();
         }
-
+        // Envoi d'une image
         private void btnSendPic_Click(object sender, EventArgs e)
         {
             ofdPictureChooser.Filter = "Image Files|*.jpg;*.jpeg;*.png";
@@ -302,7 +243,7 @@ namespace Client
 
             }
         }
-
+        // Convertir une image en byte[]
         public static byte[] ImageToByte(Image img)
         {
             ImageConverter converter = new ImageConverter();
@@ -316,10 +257,11 @@ namespace Client
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SendMessage(deconnexion,6,canal);
+            //SendMessage(deconnexion,6,canal);
             SendMessage(deconnexion,5,canal);
+            this.DialogResult = DialogResult.OK;
         }
-
+        // Envoi d'un message au serveur
         void SendMessage(msg message, int type,int canal)
         {
             
@@ -336,12 +278,10 @@ namespace Client
         {
             //on efface tous les items déjà présents dans la listview
             listViewChannel.Items.Clear();
-            //on prend chaque album dans la liste mesalbums
+            //on prend chaque canal dans la liste channels
             foreach (int canal in channels)
             {
-                //on récupère le nom de l'album et on l'ajoute dans la listview
                 ListViewItem item = new ListViewItem();
-                //item.Tag = file;
                 item.Text = canal.ToString();
                 listViewChannel.Items.Add(item);
             }
@@ -351,17 +291,16 @@ namespace Client
         {
             //on efface tous les items déjà présents dans la listview
             listViewUsers.Items.Clear();
-            //on prend chaque album dans la liste mesalbums
+            //on prend chaque pseudo dans la PseudoList
             foreach (string pseudo in PseudoList)
             {
-                //on récupère le nom de l'album et on l'ajoute dans la listview
+                //on récupère le pseudo et l'ajoute dans la listviewusers
                 ListViewItem item = new ListViewItem();
-                //item.Tag = file;
                 item.Text = pseudo;
                 listViewUsers.Items.Add(item);
             }
         }
-
+        // Changement de canal
         private void listViewChannel_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewChannel.SelectedItems.Count == 1)
@@ -369,13 +308,16 @@ namespace Client
                 if(listViewChannel.SelectedIndices[0]+1 != canal)
                 {
                     ClearTextBox();
+                    //envoi au serveur d'un message de déconnexion du canal
                     SendMessage(deconnexion, 6, canal);
                     this.canal = listViewChannel.SelectedIndices[0] + 1;
                     this.Label_Canal.Text = (listViewChannel.SelectedIndices[0] + 1).ToString();
+                    //envoi au serveur d'un message de connexion du canal
                     SendMessage(connexion, 6, canal);
                 }
             }
         }
+        //Appuyer sur Entrée dans la textbox envoie le message
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             // Touche Escape

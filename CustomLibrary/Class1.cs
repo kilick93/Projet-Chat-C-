@@ -21,6 +21,8 @@ namespace CustomLibrary
         // 1 pour 1ere connexion
         // 2 pour texte
         // 3 pour image
+        // 5 déconnexion serveur
+        // 6 connexion déconnexion canal
         public int type { get; set; }
         public byte[] image { get; set; }
         public List<String> pseudolist { get; set; }
