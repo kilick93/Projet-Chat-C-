@@ -19,6 +19,7 @@ namespace Client
     {
         public Socket clientsocket;
         public Thread DataReceived = null;
+        public Thread UserListReceived = null;
         private string content = null;
         public msg mymessage;
         public msg connexion;
@@ -26,6 +27,7 @@ namespace Client
         public string pseudo = null;
         private int canal;
         List<int> channels;
+        List<String> PseudoList = new List<string>();
         public Form2(Socket socket, string name)
         {
             this.canal = 1;
@@ -64,6 +66,16 @@ namespace Client
             {
                 MessageBox.Show("Erreur démarrage Thread Données reçues du serveur" + E.Message);
             }
+            /*try
+            {
+                UserListReceived = new Thread(new ThreadStart(CheckUser));
+                UserListReceived.IsBackground = true;
+                UserListReceived.Start();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Erreur démarrage Thread Données reçues du serveur" + E.Message);
+            }*/
         }
 
         private void SendMessage(object sender, EventArgs e)
@@ -118,7 +130,7 @@ namespace Client
                             msg messagerecu = new msg();
                             while(clientsocket.Available>0)
                             {
-                          
+
                                 try
                                 {
                             
@@ -126,7 +138,7 @@ namespace Client
                                     // reception du message
                                     clientsocket.Receive(msg, 0, clientsocket.Available, SocketFlags.None);
                                     msgrecu = System.Text.Encoding.UTF8.GetString(msg).Trim();
-                                    messagerecu = JsonConvert.DeserializeObject<msg>(msgrecu);
+                                    messagerecu = JsonConvert.DeserializeObject<msg>(msgrecu); 
                                     if (messagerecu.canal == canal)
                                     {
 
@@ -134,9 +146,26 @@ namespace Client
                                         {
                                             content += messagerecu.pseudo + " a écrit : " + messagerecu.texte;
                                         }
-                                        else if (messagerecu.type == 6)
+                                        else if (messagerecu.type == 6 || messagerecu.type == 5)
                                         {
                                             content += messagerecu.texte;
+                                            PseudoList.Clear();
+                                            PseudoList = messagerecu.pseudolist;
+                                            foreach(string pseudo in PseudoList)
+                                            {
+                                                Console.WriteLine(" un pseudo wow : " + pseudo);
+                                            }
+                                            if (listViewUsers.InvokeRequired)
+                                            {
+                                                refreshUserViewInvokeHandler MethodeDelegate = new refreshUserViewInvokeHandler(refreshUserView);
+                                                IAsyncResult iar = this.BeginInvoke(MethodeDelegate);
+                                                this.EndInvoke(iar);
+                                            }
+                                            else
+                                            {
+                                                refreshUserView();
+                                            }
+                                            
                                         }
 
                                     }
@@ -185,11 +214,64 @@ namespace Client
                 }
                 
             }
+            catch(ThreadStateException e)
+            {
+                Console.WriteLine(e.Message);
+                //Thread.ResetAbort();
+            }
+
+        }
+
+        private void CheckUser()
+        {
+            try
+            {
+
+                while (true)
+                {
+                    if (clientsocket.Connected)
+                    {
+                        // si le socket a des données à lire
+                        if (clientsocket.Available > 0)
+                        {
+                            string msgrecu = null;
+                            msg messagerecu = new msg();
+                            while (clientsocket.Available > 0)
+                            {
+
+                                try
+                                {
+
+                                    byte[] msg = new Byte[clientsocket.Available];
+                                    // reception du message
+                                    clientsocket.Receive(msg, 0, clientsocket.Available, SocketFlags.None);
+                                    msgrecu = System.Text.Encoding.UTF8.GetString(msg).Trim();
+                                    messagerecu = JsonConvert.DeserializeObject<msg>(msgrecu);
+                                    if (messagerecu.type == 7)
+                                    {
+                                        PseudoList.Clear();
+                                        PseudoList.Add(messagerecu.texte);
+                                        refreshUserView();
+                                    }
+                                    else
+                                    {
+                                        // Do Nothing
+                                    }
+                                }
+                                catch (SocketException E)
+                                {
+                                    MessageBox.Show("Check User" + E.Message);
+                                }
+                            }
+                        }
+                    }
+                    Thread.Sleep(10);
+                }
+            }
             catch
             {
                 Thread.ResetAbort();
             }
-
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -249,6 +331,7 @@ namespace Client
             clientsocket.Send(msg, SocketFlags.None);
         }
 
+        
         private void refreshChannelView()
         {
             //on efface tous les items déjà présents dans la listview
@@ -261,6 +344,21 @@ namespace Client
                 //item.Tag = file;
                 item.Text = canal.ToString();
                 listViewChannel.Items.Add(item);
+            }
+        }
+        private delegate void refreshUserViewInvokeHandler();
+        private void refreshUserView()
+        {
+            //on efface tous les items déjà présents dans la listview
+            listViewUsers.Items.Clear();
+            //on prend chaque album dans la liste mesalbums
+            foreach (string pseudo in PseudoList)
+            {
+                //on récupère le nom de l'album et on l'ajoute dans la listview
+                ListViewItem item = new ListViewItem();
+                //item.Tag = file;
+                item.Text = pseudo;
+                listViewUsers.Items.Add(item);
             }
         }
 

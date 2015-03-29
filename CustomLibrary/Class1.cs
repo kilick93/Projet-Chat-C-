@@ -23,6 +23,7 @@ namespace CustomLibrary
         // 3 pour image
         public int type { get; set; }
         public byte[] image { get; set; }
+        public List<String> pseudolist { get; set; }
 
 
     }

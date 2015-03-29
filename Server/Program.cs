@@ -20,12 +20,15 @@ namespace Server
         public ArrayList readList = new ArrayList();
         byte[] message;
         byte[] liste;
+        byte[][] msglist;
+        public msg mylist = new msg();
         List<string> PseudoList { get; set; }
         public msg messagerecu = new msg();
 
         public server()
         {
             this.PseudoList = new List<string>();
+            this.mylist.type=7;
         }
 
         // démarrage du serveur
@@ -81,12 +84,16 @@ namespace Server
                             ((Socket)readList[i]).Receive(message, SocketFlags.None);
                             Console.WriteLine(Encoding.UTF8.GetString(message));
                             messagerecu = JsonConvert.DeserializeObject<msg>(Encoding.UTF8.GetString(message));
-                            
+                            messagerecu.pseudolist = PseudoList;
+                            string output = JsonConvert.SerializeObject(messagerecu);
+                            //Console.WriteLine(output);
+                            message = Encoding.UTF8.GetBytes(output);
                             if (messagerecu.type == 1)
                             {
                                 
                                 if (!checkPseudo(messagerecu.pseudo, ((Socket)readList[i])))
                                 {
+                                    
                                     //Envoi Pseudo List updated;
                                 }
                             }
@@ -97,6 +104,8 @@ namespace Server
                                 ((Socket)readList[i]).Close();
                                 acceptList.Remove(((Socket)readList[i]));
                                 Console.WriteLine("Deconnexion Client");
+                                messagerecu.pseudolist = PseudoList;
+                                //SendPseudoList();
                                 //Envoid Pseudo List Updated
                             }
                         }
@@ -131,9 +140,14 @@ namespace Server
                 {
                     try
                     {
-                        messagereceived = JsonConvert.DeserializeObject<msg>(Encoding.UTF8.GetString(message));
+
+                        
                         if(messagereceived.type==2 || messagereceived.type==6)
                         {
+                            messagereceived.pseudolist = PseudoList;
+                            string output = JsonConvert.SerializeObject(messagereceived);
+                            Console.WriteLine(output);
+                            message = Encoding.UTF8.GetBytes(output);
                             ((Socket)acceptList[i]).Send(message, SocketFlags.None);
                         }
                     }
@@ -173,14 +187,16 @@ namespace Server
                 }
                 else
                 {
+                    PseudoList.Add(pseudo);
                     msg test = new msg();
                     test.type = 2;
+                    test.pseudolist = PseudoList;
                     //test.texte = pseudo + " s'est connecté";
                     string sortie = JsonConvert.SerializeObject(test);
                     byte[] test2 = Encoding.UTF8.GetBytes(sortie);
                     ((Socket)acceptList[acceptList.IndexOf(server)]).Send(test2);
                     //forward(test);
-                    PseudoList.Add(pseudo);
+                    //SendPseudoList();
                     return true;
                 }
             }
@@ -191,8 +207,38 @@ namespace Server
             }
                    
         }
-
+        private void SendPseudoList()
+        {
+            for (int i = 0; i < acceptList.Count; i++)
+            {
+                if (((Socket)acceptList[i]).Connected)
+                {
+                    try
+                    {
+                        
+                            mylist.texte="Liste des pseudos";
+                            mylist.canal = 0;
+                            mylist.pseudo = "Liste";
+                            mylist.type = 7;
+                            mylist.pseudolist = PseudoList;
+                            string output=JsonConvert.SerializeObject(mylist);
+                            liste = Encoding.Unicode.GetBytes(output);
+                            Console.WriteLine("OK: " +output);
+                            ((Socket)acceptList[i]).Send(liste, SocketFlags.None);
+                        
+                    }   
+                    catch
+                    {
+                    }
+                }
+            }
+            
+        }
+   
     }
+
+    
+
     class Program
     {
 
