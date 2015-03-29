@@ -42,6 +42,7 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.richTextBox1.Location = new System.Drawing.Point(153, 40);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;

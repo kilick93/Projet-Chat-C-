@@ -72,24 +72,30 @@ namespace Client
             if(clientsocket == null ||  !clientsocket.Connected)
             {
                 MessageBox.Show("Vous n'êtes pas connecté");
-            }   
-            try
+            }
+            else
             {
-                if(textBox1.Text!="")
+                try
                 {
-                    mymessage.texte = textBox1.Text;
-                    mymessage.pseudo = pseudo;
-                    mymessage.canal = canal;
-                    mymessage.type = 2;
-                    string output = JsonConvert.SerializeObject(mymessage);
-                    byte[] msg = Encoding.UTF8.GetBytes(output);
-                    clientsocket.Send(msg, SocketFlags.None);
+                    if (textBox1.Text != "")
+                    {
+                        mymessage.texte = textBox1.Text;
+                        mymessage.pseudo = pseudo;
+                        mymessage.canal = canal;
+                        mymessage.type = 2;
+                        string output = JsonConvert.SerializeObject(mymessage);
+                        byte[] msg = Encoding.UTF8.GetBytes(output);
+                        clientsocket.Send(msg, SocketFlags.None);
+
+                    }
                 }
+                catch (Exception E)
+                {
+                    MessageBox.Show("Envoi du message:" + E.Message);
+                }
+                textBox1.Text = "";
             }
-            catch(Exception E)
-            {
-                MessageBox.Show("Envoi du message:" + E.Message);
-            }
+            
         }
 
         private void CheckData()
@@ -271,6 +277,43 @@ namespace Client
                 }
             }
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Touche Escape
+            if (keyData == Keys.Enter)
+            {
+                if (clientsocket == null || !clientsocket.Connected)
+                {
+                    MessageBox.Show("Vous n'êtes pas connecté");
+                }
+                else
+                {
+                    try
+                    {
+                        if (textBox1.Text != "")
+                        {
+                            mymessage.texte = textBox1.Text;
+                            mymessage.pseudo = pseudo;
+                            mymessage.canal = canal;
+                            mymessage.type = 2;
+                            string output = JsonConvert.SerializeObject(mymessage);
+                            byte[] txt = Encoding.UTF8.GetBytes(output);
+                            clientsocket.Send(txt, SocketFlags.None);
+
+                        }
+                    }
+                    catch (Exception E)
+                    {
+                        MessageBox.Show("Envoi du message:" + E.Message);
+                    }
+                    textBox1.Text = "";
+                }
+                return true;
+            }
+            else
+                return base.ProcessCmdKey(ref msg, keyData);
+        }
+
 
     }
 }
