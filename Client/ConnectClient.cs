@@ -15,12 +15,12 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    public partial class Form1 : Form
+    public partial class ConnectClient : Form
     {
         public string Pseudo = null;
         public Socket server = null;
         public msg mymessage;
-        public Form1()
+        public ConnectClient()
         {
             InitializeComponent();
             mymessage = new msg();
@@ -83,7 +83,7 @@ namespace Client
                     if (messagerecu.type!=5)
                     {
                         Console.WriteLine("Creation Form 2");
-                        Form2 form2 = new Form2(server, Pseudo);
+                        ChatClient form2 = new ChatClient(server, Pseudo);
                         //SendMessage(Pseudo + " s'est connecté",6);
                         if (form2.ShowDialog() == DialogResult.OK)
                         {

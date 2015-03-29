@@ -6,8 +6,6 @@ C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\bin\Debug\Newtonsoft.Json
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\bin\Debug\CustomLibrary.pdb
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
-C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.Form1.resources
-C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.Form2.resources
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.Properties.Resources.resources
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.csproj.GenerateResource.Cache
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.exe
@@ -40,3 +38,5 @@ C:\Users\Robin\Desktop\ii\Projet-Chat-C-\Client\obj\Debug\Client.Properties.Reso
 C:\Users\Robin\Desktop\ii\Projet-Chat-C-\Client\obj\Debug\Client.csproj.GenerateResource.Cache
 C:\Users\Robin\Desktop\ii\Projet-Chat-C-\Client\obj\Debug\Client.exe
 C:\Users\Robin\Desktop\ii\Projet-Chat-C-\Client\obj\Debug\Client.pdb
+C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.ChatClient.resources
+C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.ConnectClient.resources

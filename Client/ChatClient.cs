@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    public partial class Form2 : Form
+    public partial class ChatClient : Form
     {
         public Socket clientsocket;
         public Thread DataReceived = null;
@@ -28,7 +28,7 @@ namespace Client
         private int canal;
         List<int> channels;
         List<String> PseudoList = new List<string>();
-        public Form2(Socket socket, string name)
+        public ChatClient(Socket socket, string name)
         {
             this.canal = 1;
             this.clientsocket = socket;
