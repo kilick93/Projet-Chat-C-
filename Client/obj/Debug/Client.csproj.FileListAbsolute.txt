@@ -12,3 +12,17 @@ C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.Properti
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.csproj.GenerateResource.Cache
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.exe
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.pdb
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\bin\Debug\Client.exe.config
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\bin\Debug\Client.exe
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\bin\Debug\Client.pdb
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\bin\Debug\CustomLibrary.dll
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\bin\Debug\CustomLibrary.pdb
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.Form1.resources
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.Form2.resources
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.csproj.GenerateResource.Cache
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.exe
+C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\Client\obj\Debug\Client.pdb

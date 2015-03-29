@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.text_IP = new System.Windows.Forms.TextBox();
             this.text_Port = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -75,7 +76,7 @@
             this.btn_connect.Location = new System.Drawing.Point(97, 149);
             this.btn_connect.Name = "btn_connect";
             this.btn_connect.Size = new System.Drawing.Size(75, 23);
-            this.btn_connect.TabIndex = 5;
+            this.btn_connect.TabIndex = 6;
             this.btn_connect.Text = "Connect";
             this.btn_connect.UseVisualStyleBackColor = true;
             this.btn_connect.Click += new System.EventHandler(this.btn_connect_Click);
@@ -94,7 +95,7 @@
             this.text_Pseudo.Location = new System.Drawing.Point(84, 113);
             this.text_Pseudo.Name = "text_Pseudo";
             this.text_Pseudo.Size = new System.Drawing.Size(100, 20);
-            this.text_Pseudo.TabIndex = 7;
+            this.text_Pseudo.TabIndex = 5;
             // 
             // Form1
             // 
@@ -108,8 +109,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.text_Port);
             this.Controls.Add(this.text_IP);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Connect";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

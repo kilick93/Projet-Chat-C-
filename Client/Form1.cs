@@ -29,11 +29,6 @@ namespace Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            /*
-            IPEndPoint ipep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
-            Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            server.Connect(ipep);
-             * */
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -43,14 +38,6 @@ namespace Client
 
         private void btn_connect_Click(object sender, EventArgs e)
         {
-            /*
-            // Créer un nouveau client TCP
-            TcpClient TcpServer = new TcpClient();
-            //Connexion à l'adresse et au port indiqués
-            TcpServer.Connect(text_IP.Text, int.Parse(text_Port.Text));
-            //Fermeture de la connexion
-            TcpServer.Close();
-             * */
 
             if (text_Pseudo.Text == "")
             {
@@ -71,7 +58,14 @@ namespace Client
             Pseudo = text_Pseudo.Text;
             IPEndPoint ipep = new IPEndPoint(IPAddress.Parse(text_IP.Text), int.Parse(text_Port.Text));
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            server.Connect(ipep);
+            try
+            {
+                server.Connect(ipep);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Serveur indisponible");
+            }
             if (server.Connected)
             {
                 SendMessage(Pseudo,1);
@@ -94,7 +88,7 @@ namespace Client
                         //SendMessage(Pseudo + " s'est connecté",6);
                         if (form2.ShowDialog() == DialogResult.OK)
                         {
-
+                            this.Close();
                         }
                         else
                         {

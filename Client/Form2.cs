@@ -181,8 +181,9 @@ namespace Client
                             
                         }
                     }
-                }
                 Thread.Sleep(10);
+                }
+                
             }
             catch
             {
@@ -312,6 +313,11 @@ namespace Client
             }
             else
                 return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
         }
 
 
