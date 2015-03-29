@@ -1,24 +1,6 @@
-C:\Users\Robin\Desktop\Projet-Chat-C-\CustomLibrary\bin\Debug\CustomLibrary.dll
-C:\Users\Robin\Desktop\Projet-Chat-C-\CustomLibrary\bin\Debug\CustomLibrary.pdb
-C:\Users\Robin\Desktop\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.csprojResolveAssemblyReference.cache
-C:\Users\Robin\Desktop\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.dll
-C:\Users\Robin\Desktop\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.pdb
-C:\Users\Robin\Desktop\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Robin\Desktop\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsoft.Json.xml
-<<<<<<< HEAD
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\CustomLibrary\bin\Debug\CustomLibrary.dll
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\CustomLibrary\bin\Debug\CustomLibrary.pdb
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.csprojResolveAssemblyReference.cache
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.dll
 C:\Users\Pascal\Documents\GitHub\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.pdb
-=======
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\bin\Debug\CustomLibrary.dll
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\bin\Debug\CustomLibrary.pdb
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.csprojResolveAssemblyReference.cache
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.dll
-C:\Users\Robin\Documents\GitHub\Projet-Chat-C-\CustomLibrary\obj\Debug\CustomLibrary.pdb
->>>>>>> origin/master

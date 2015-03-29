@@ -37,6 +37,7 @@
             this.ofdPictureChooser = new System.Windows.Forms.OpenFileDialog();
             this.listViewChannel = new System.Windows.Forms.ListView();
             this.listViewUsers = new System.Windows.Forms.ListView();
+            this.Label_Canal = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -69,11 +70,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(14, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.Size = new System.Drawing.Size(83, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Channel";
+            this.label1.Text = "Current Channel";
             // 
             // label2
             // 
@@ -106,6 +107,7 @@
             this.listViewChannel.Size = new System.Drawing.Size(102, 345);
             this.listViewChannel.TabIndex = 8;
             this.listViewChannel.UseCompatibleStateImageBehavior = false;
+            this.listViewChannel.SelectedIndexChanged += new System.EventHandler(this.listViewChannel_SelectedIndexChanged);
             // 
             // listViewUsers
             // 
@@ -115,11 +117,20 @@
             this.listViewUsers.TabIndex = 9;
             this.listViewUsers.UseCompatibleStateImageBehavior = false;
             // 
+            // Label_Canal
+            // 
+            this.Label_Canal.AutoSize = true;
+            this.Label_Canal.Location = new System.Drawing.Point(103, 13);
+            this.Label_Canal.Name = "Label_Canal";
+            this.Label_Canal.Size = new System.Drawing.Size(0, 13);
+            this.Label_Canal.TabIndex = 10;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 397);
+            this.Controls.Add(this.Label_Canal);
             this.Controls.Add(this.listViewUsers);
             this.Controls.Add(this.listViewChannel);
             this.Controls.Add(this.btnSendPic);
@@ -147,5 +158,6 @@
         private System.Windows.Forms.OpenFileDialog ofdPictureChooser;
         private System.Windows.Forms.ListView listViewChannel;
         private System.Windows.Forms.ListView listViewUsers;
+        private System.Windows.Forms.Label Label_Canal;
     }
 }
