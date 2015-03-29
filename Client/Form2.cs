@@ -22,15 +22,28 @@ namespace Client
         private string content = null;
         public msg mymessage;
         public string pseudo = null;
+        private int canal;
+        List<int> channels;
         public Form2(Socket socket, string name)
         {
+            this.canal = 1;
             this.clientsocket = socket;
             this.pseudo=name;
             InitializeComponent();
             mymessage = new msg();
+            channels = new List<int>();
+            channels.Add(1);
+            channels.Add(2);
+            channels.Add(3);
+            channels.Add(4);
+            channels.Add(5);
+            channels.Add(6);
+            this.canal = 1;
+            this.Label_Canal.Text = 1.ToString();
+            refreshChannelView();
             //richTextBox1.AppendText(Environment.NewLine + DateTime.Today + content);
             try
-	        {
+	        {   
 		        DataReceived = new Thread(new ThreadStart(CheckData));
                 DataReceived.IsBackground = true;
 	 	        DataReceived.Start();
@@ -54,6 +67,7 @@ namespace Client
                 {
                     mymessage.texte = textBox1.Text;
                     mymessage.pseudo = pseudo;
+                    mymessage.canal = canal;
                     mymessage.type = 2;
                     string output = JsonConvert.SerializeObject(mymessage);
                     byte[] msg = Encoding.UTF8.GetBytes(output);
@@ -83,6 +97,7 @@ namespace Client
                            
                             string msgrecu = null;
                             content = null;
+                            msg messagerecu = new msg();
                             while(clientsocket.Available>0)
                             {
                           
@@ -93,15 +108,26 @@ namespace Client
                                     // reception du message
                                     clientsocket.Receive(msg, 0, clientsocket.Available, SocketFlags.None);
                                     msgrecu = System.Text.Encoding.UTF8.GetString(msg).Trim();
-                                    msg messagerecu = JsonConvert.DeserializeObject<msg>(msgrecu);
-                                    if(messagerecu.type==2)
+                                    messagerecu = JsonConvert.DeserializeObject<msg>(msgrecu);
+                                    if (messagerecu.canal == canal)
                                     {
-                                        content += messagerecu.pseudo + " a écrit : " + messagerecu.texte;
+
+
+                                        if (messagerecu.type == 2)
+                                        {
+                                            content += messagerecu.pseudo + " a écrit : " + messagerecu.texte;
+                                        }
+                                        else if (messagerecu.type == 6)
+                                        {
+                                            content += messagerecu.texte;
+                                        }
+
                                     }
-                                    else if (messagerecu.type==6)
+                                    else
                                     {
-                                        content += messagerecu.texte;
+                                        // Do Nothing
                                     }
+                                    
                                                                    
                                 }
                                 catch(SocketException E)
@@ -111,21 +137,24 @@ namespace Client
                             }
                             try
                             {
-                 
-                                /*MethodInvoker action = delegate
-                                { richTextBox1.AppendText(Environment.NewLine + DateTime.Today + content); };
-                                richTextBox1.Invoke(action);*/
-                                if (richTextBox1.InvokeRequired)
+                                if (messagerecu.canal == canal)
                                 {
-                                    TextBoxInvokeHandler MethodeDelegate = new TextBoxInvokeHandler(FonctionTextBox);
-                                    IAsyncResult iar  = this.BeginInvoke(MethodeDelegate,content);
-                                    this.EndInvoke(iar);
+
+                                    if (richTextBox1.InvokeRequired)
+                                    {
+                                        TextBoxInvokeHandler MethodeDelegate = new TextBoxInvokeHandler(FonctionTextBox);
+                                        IAsyncResult iar = this.BeginInvoke(MethodeDelegate, content);
+                                        this.EndInvoke(iar);
+                                    }
+                                    else
+                                    {
+                                        FonctionTextBox(content);
+                                    }
                                 }
                                 else
                                 {
-                                   FonctionTextBox(content);
+                                    // do nothing
                                 }
-
                             }
                             catch(Exception E)
                             {
@@ -157,6 +186,11 @@ namespace Client
             this.richTextBox1.AppendText(msg + "\n");
         }
 
+        private void ClearTextBox()
+        {
+            this.richTextBox1.ResetText();
+        }
+
         private void btnSendPic_Click(object sender, EventArgs e)
         {
             ofdPictureChooser.Filter = "Image Files|*.jpg;*.jpeg;*.png";
@@ -183,9 +217,9 @@ namespace Client
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             msg deconnexion = new msg();
-            SendMessage(deconnexion,5);
             deconnexion.texte = pseudo + " s'est deconnecté";
             SendMessage(deconnexion,6);
+            SendMessage(deconnexion,5);
         }
 
         void SendMessage(msg message, int type)
@@ -193,10 +227,37 @@ namespace Client
             
             message.pseudo = pseudo;
             message.type = type;
-            //deconnexion.texte = "deconnexion client";
             string output = JsonConvert.SerializeObject(message);
             byte[] msg = Encoding.UTF8.GetBytes(output);
             clientsocket.Send(msg, SocketFlags.None);
+        }
+
+        private void refreshChannelView()
+        {
+            //on efface tous les items déjà présents dans la listview
+            listViewChannel.Items.Clear();
+            //on prend chaque album dans la liste mesalbums
+            foreach (int canal in channels)
+            {
+                //on récupère le nom de l'album et on l'ajoute dans la listview
+                ListViewItem item = new ListViewItem();
+                //item.Tag = file;
+                item.Text = canal.ToString();
+                listViewChannel.Items.Add(item);
+            }
+        }
+
+        private void listViewChannel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewChannel.SelectedItems.Count == 1)
+            {
+                if(listViewChannel.SelectedIndices[0]+1 != canal)
+                {
+                    ClearTextBox();
+                    this.canal = listViewChannel.SelectedIndices[0] + 1;
+                    this.Label_Canal.Text = (listViewChannel.SelectedIndices[0] + 1).ToString();
+                }
+            }
         }
 
     }
